@@ -21,6 +21,7 @@ WORKDIR /opt/quint
 RUN apt-get update
 #RUN apt-get install -y gcc
 RUN apt-get install -y python3.9
+RUN apt-get install -y python3.9-dev
 
 #RUN pip install --upgrade pip
 RUN pip install poetry
