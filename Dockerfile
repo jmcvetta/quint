@@ -15,6 +15,7 @@ FROM tensorflow/tensorflow:latest
 
 WORKDIR /opt/quint
 
+# FIXME: Consolidate apt-get installs after dev
 RUN apt-get update
 RUN apt-get install -y ffmpeg
 RUN apt-get install -y python3.9
