@@ -27,6 +27,7 @@ Poetry
 
 ```shell
 poetry install
+poetry run quint  # TODO: start script not yet implemented
 ```
 
 
