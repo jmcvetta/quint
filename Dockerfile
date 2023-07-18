@@ -24,6 +24,9 @@ COPY pyproject.toml /opt/quint/pyproject.toml
 COPY poetry.lock /opt/quint/poetry.lock
 RUN poetry install
 
+#RUN poetry run spacy download en_core_web_sm
+RUN poetry run spacy download en_core_web_lg
+
 COPY . /opt/quint/
 
 CMD poetry run uvicorn quint.api.fast:app --host 0.0.0.0 --port 8000
