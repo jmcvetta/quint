@@ -18,6 +18,31 @@ WORKDIR /opt/quint
 RUN apt-get update && \
     apt-get install -y ffmpeg python3.9 python3.9-dev
 
+RUN apt-get -y install curl git
+
+
+# Install Asdf
+SHELL ["/bin/bash", "-lc"]
+RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
+RUN     echo ". $HOME/.asdf/asdf.sh" >> /root/.bashrc && \
+        echo export ASDF_DIR="$HOME/.asdf" >> /root/.profile && \
+        echo . "$HOME/.asdf/asdf.sh" >> /root/.profile
+RUN asdf plugin-add python
+ADD .tool-versions .tool-versions
+
+RUN apt-get install -y libbz2-dev
+RUN apt-get install -y libffi-dev
+RUN apt-get install -y build-essential
+RUN apt-get install -y libncurses-dev
+RUN apt-get install -y libreadline-dev
+RUN apt-get install -y libssl-dev
+RUN asdf install
+
+RUN asdf which python
+
+
+
+
 RUN pip install poetry
 
 COPY pyproject.toml /opt/quint/pyproject.toml
